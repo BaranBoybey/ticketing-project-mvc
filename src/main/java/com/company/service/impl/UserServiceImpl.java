@@ -1,0 +1,30 @@
+package com.company.service.impl;
+
+import com.company.dto.UserDTO;
+import com.company.service.CrudService;
+import com.company.service.UserService;
+
+import java.util.List;
+
+public class UserServiceImpl extends AbstractMapService<UserDTO, String> implements UserService {
+
+    @Override
+    public UserDTO save(UserDTO user) {
+        return super.save(user,user.getUserName());
+    }
+
+    @Override
+    public UserDTO findById(String id) {
+        return findById(id);
+    }
+
+    @Override
+    public List<UserDTO> findAll() {
+        return super.findAll();
+    }
+
+    @Override
+    public void deleteById(String id) {
+        super.deleteById(id);
+    }
+}
