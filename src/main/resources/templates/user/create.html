@@ -32,7 +32,7 @@
                                 <div class="panel-body">
 
                                     <!-- ------------------------FORM START----------------------------- -->
-                                    <form action="#" th:object="${user}">
+                                    <form th:action="@{/user/create}" th:object="${user}" method="post">
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
@@ -86,10 +86,10 @@
                                                 <div class="form-group">
                                                     <label>Gender</label><br>
                                                     <label class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="radio-inline" th:value="Male" th:field="*{gender}" class="custom-control-input"><span class="custom-control-label">Male</span>
+                                                        <input type="radio" name="radio-inline" th:value="MALE" th:field="*{gender}" class="custom-control-input"><span class="custom-control-label">Male</span>
                                                     </label>
                                                     <label class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="radio-inline" th:value="Female" th:field="*{gender}" class="custom-control-input"><span class="custom-control-label">Female</span>
+                                                        <input type="radio" name="radio-inline" th:value="FEMALE" th:field="*{gender}" class="custom-control-input"><span class="custom-control-label">Female</span>
                                                     </label>
 
                                                 </div>
@@ -157,7 +157,7 @@
                                             <tr th:each="theUser : ${userList}">
                                                 <td th:value="${theUser.firstName}" th:text="${theUser.firstName}"></td>
                                                 <td th:value="${theUser.userName}" th:text="${theUser.userName}"></td>
-                                                <td th:value="${theUser.gender}" th:text="${theUser.gender}"></td>
+                                                <td th:value="${theUser.gender}" th:text="${theUser.gender.value}"></td>
                                                 <td th:value="${theUser.phone}" th:text="${theUser.phone}"></td>
                                                 <td th:value="${theUser.role.description}" th:text="${theUser.role.description}"></td>
                                                 <td class="actions">
