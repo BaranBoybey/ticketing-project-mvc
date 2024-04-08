@@ -1,7 +1,5 @@
 package com.company.service;
 
-import com.company.dto.RoleDTO;
-import com.company.dto.UserDTO;
 
 import java.util.List;
 
@@ -14,4 +12,6 @@ public interface CrudService<T,ID> {
     List<T> findAll();
 
     void deleteById(ID id);
+
+    void update(T object);
 }

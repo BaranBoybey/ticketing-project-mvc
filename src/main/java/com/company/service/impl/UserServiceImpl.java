@@ -3,9 +3,11 @@ package com.company.service.impl;
 import com.company.dto.UserDTO;
 import com.company.service.CrudService;
 import com.company.service.UserService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserServiceImpl extends AbstractMapService<UserDTO, String> implements UserService {
 
     @Override
@@ -15,7 +17,7 @@ public class UserServiceImpl extends AbstractMapService<UserDTO, String> impleme
 
     @Override
     public UserDTO findById(String id) {
-        return findById(id);
+        return super.findById(id);
     }
 
     @Override
@@ -26,5 +28,10 @@ public class UserServiceImpl extends AbstractMapService<UserDTO, String> impleme
     @Override
     public void deleteById(String id) {
         super.deleteById(id);
+    }
+
+    @Override
+    public void update(UserDTO object) {
+        super.update(object.getUserName(), object);
     }
 }

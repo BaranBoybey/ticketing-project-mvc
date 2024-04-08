@@ -7,13 +7,10 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("user")
+@RequestMapping("/user")
 public class UserController {
 
     private final RoleService roleService;
@@ -36,18 +33,21 @@ public class UserController {
     public String insertUser(Model model, @ModelAttribute("user") UserDTO userDTO) {
         userService.save(userDTO);
 
-        model.addAttribute("user", new UserDTO());
-        model.addAttribute("roleList", roleService.findAll());
-        model.addAttribute("userList", userService.findAll());
-
-        return "/user/create";
-
-
-
-
-
-
+        return "redirect:/user/create";
     }
 
+    @GetMapping("/update/{username}")
+    public String updateButton(Model model, @PathVariable("username") String username) {
+        model.addAttribute("roleList", roleService.findAll());
+        model.addAttribute("userList", userService.findAll());
+        model.addAttribute("user", userService.findById(username));
 
+        return "/user/update";
+    }
+
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute("user") UserDTO userDTO) {
+        userService.update(userDTO);
+        return "redirect:/user/create";
+    }
 }
