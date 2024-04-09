@@ -34,4 +34,5 @@ public class UserServiceImpl extends AbstractMapService<UserDTO, String> impleme
     public void update(UserDTO object) {
         super.update(object.getUserName(), object);
     }
+
 }

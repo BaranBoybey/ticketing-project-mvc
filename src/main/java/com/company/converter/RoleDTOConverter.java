@@ -1,4 +1,4 @@
-package com.company;
+package com.company.converter;
 
 import com.company.dto.RoleDTO;
 import com.company.service.RoleService;
