@@ -51,7 +51,7 @@ public class UserController {
         return "redirect:/user/create";
     }
 
-    @GetMapping("/delete/{username}")
+    @PostMapping("/delete/{username}")
     public String deleteButton(Model model, @PathVariable("username") String username) {
         userService.deleteById(username);
         return "redirect:/user/create";
