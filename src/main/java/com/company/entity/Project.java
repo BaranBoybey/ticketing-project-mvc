@@ -10,4 +10,5 @@ public class Project extends BaseEntity{
     private UserDTO assignedManager;
     private LocalDate startDate;
     private LocalDate endDate;
+    private String projectDetails;
 }
