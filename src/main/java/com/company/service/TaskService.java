@@ -1,5 +1,7 @@
 package com.company.service;
 
-public interface TaskService extends CrudService<TaskService, Long>{
+import com.company.dto.TaskDTO;
+
+public interface TaskService extends CrudService<TaskDTO, Long>{
 
 }
