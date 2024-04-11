@@ -2,11 +2,13 @@ package com.company.bootstrap;
 
 import com.company.dto.ProjectDTO;
 import com.company.dto.RoleDTO;
+import com.company.dto.TaskDTO;
 import com.company.dto.UserDTO;
 import com.company.enums.Gender;
 import com.company.enums.Status;
 import com.company.service.ProjectService;
 import com.company.service.RoleService;
+import com.company.service.TaskService;
 import com.company.service.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -20,11 +22,13 @@ public class DataGenerator implements CommandLineRunner {
     private final UserService userService;
 
     private final ProjectService projectService;
+    private final TaskService taskService;
 
-    public DataGenerator(RoleService roleService, UserService userService, ProjectService projectService) {
+    public DataGenerator(RoleService roleService, UserService userService, ProjectService projectService, TaskService taskService) {
         this.roleService = roleService;
         this.userService = userService;
         this.projectService = projectService;
+        this.taskService = taskService;
     }
 
     @Override
@@ -48,5 +52,8 @@ public class DataGenerator implements CommandLineRunner {
 
         ProjectDTO projectDTO1 = new ProjectDTO("software upgrade", "SW001", user2, LocalDate.now(), LocalDate.now().plusDays(14L),"Let's go team", Status.OPEN);
         projectService.save(projectDTO1);
+
+        TaskDTO taskDTO = new TaskDTO(10L, projectDTO1,user3,"Software version update","please work on it untill next meeting",Status.IN_PROGRESS, LocalDate.now());
+        taskService.save(taskDTO);
     }
 }

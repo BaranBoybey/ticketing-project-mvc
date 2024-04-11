@@ -19,7 +19,20 @@ public class ProjectDTO {
     private LocalDate startDate;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
+
+    public ProjectDTO(String projectName, String projectCode, UserDTO assignedManager, LocalDate startDate, LocalDate endDate, String projectDetails, Status status) {
+        this.projectName = projectName;
+        this.projectCode = projectCode;
+        this.assignedManager = assignedManager;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.projectDetails = projectDetails;
+        this.status = status;
+    }
+
     private String projectDetails;
     private Status status;
+    private int completeTaskCounts;
+    private int unfinishedTaskCounts;
 
 }
