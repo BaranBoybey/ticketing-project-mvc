@@ -27,20 +27,20 @@
 
                             <section class="panel panel-transparent">
                                 <header class="panel-heading">
-                                    <h2 class="panel-title">Task Create</h2>
+                                    <h2 class="panel-title">Task Update</h2>
                                 </header>
 
                                 <div class="panel-body">
 
                                     <!-- ------------------------FORM START----------------------------- -->
-                                    <form th:action="@{/task/create}" method="post" th:object="${task}">
+                                    <form th:action="@{/task/update/{id}(id=${task.getId()})}" method="post"
+                                          th:object="${task}">
 
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label>Project</label>
                                                     <select name="project" class="custom-select" th:field="*{project}">
-                                                        <option th:value="''" th:text="Select"></option>
                                                         <option th:each="project : ${projects}"
                                                                 th:value="${project.projectCode}"
                                                                 th:text="${project.projectName}"></option>
@@ -61,7 +61,6 @@
                                                     <label>Assigned Employee</label>
                                                     <select name="assignedemployee" class="custom-select"
                                                             th:field="*{assignedEmployee}">
-                                                        <option th:value="''" th:text="Select"></option>
                                                         <option th:each="employee : ${employees}"
                                                                 th:value="${employee.userName}"
                                                                 th:text="${employee.firstName + ' ' + employee.lastName}"></option>
@@ -130,7 +129,6 @@
                     </div>
 
                 </div>
-
 
                 <!-- ------------------------TABLE START----------------------------- -->
 
